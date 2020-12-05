@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.DTO;
+using ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ApplicationCore.Interfaces
 
         public Task<OrdenDTO> CreateOrdenAsync(OrdenDTO orden);
 
-        public Task UpdateOrdenAsync(int id, OrdenDTO ordenActualizada);
+        public void UpdateOrdenAsync(Orden orden);
 
         public void DeleteOrdenAsync(int id);
     }

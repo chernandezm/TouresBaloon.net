@@ -18,7 +18,8 @@ namespace Infraestructure.Messaging
         {
             var config = new ProducerConfig
             {
-                BootstrapServers = "localhost:9092"
+                BootstrapServers = "172.17.0.1:9092"
+                //BootstrapServers = "localhost:9092"
             };
 
             _producer = new ProducerBuilder<Null, string>(config).Build();
@@ -27,7 +28,7 @@ namespace Infraestructure.Messaging
         public async void DistribuirOrden(OrdenDTO orden)
         {
             string content = JsonConvert.SerializeObject(orden);
-            await _producer.ProduceAsync("checkout", new Message<Null, string> { Value = content });
+            await _producer.ProduceAsync("orden", new Message<Null, string> { Value = content });
         }
 
         public void PublicarOrden(Orden orden)

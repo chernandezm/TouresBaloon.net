@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.DTO;
+using ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ApplicationCore.Interfaces
 
         public Task<CanastaDTO> CreateCanastaAsync(CanastaDTO canasta);
 
-        public Task UpdateCanastaAsync(int id, CanastaDTO canastaActualizada);
+        public void UpdateCanastaAsync(Canasta canasta);
 
         public void DeleteCanastaAsync(int id);
     }

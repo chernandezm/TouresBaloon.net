@@ -71,6 +71,24 @@ namespace WebApiOrden.Controllers
             }
         }
 
+        //[HttpPut]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public IActionResult UpdateOrden()
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid) return BadRequest();
+
+        //        _servicio.UpdateOrdenAsync();
+        //        return Ok();
+        //    }
+        //    catch (ItemNoExisteException e)
+        //    {
+        //        return NotFound();
+        //    }
+        //}
 
     }
 }

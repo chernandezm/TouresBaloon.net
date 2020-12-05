@@ -71,6 +71,23 @@ namespace WebApiCarrito.Controllers
             }
         }
 
+        //[HttpPut]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public IActionResult UpdateCanasta()
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid) return BadRequest();
 
+        //        _servicio.UpdateCanastaAsync();
+        //        return Ok();
+        //    }
+        //    catch (ItemNoExisteException e)
+        //    {
+        //        return NotFound();
+        //    }
+        //}
     }
 }

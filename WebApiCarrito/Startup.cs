@@ -48,7 +48,7 @@ namespace WebApiCarrito
             services.AddTransient<ICanastaPublisher, CanastaPublisher>();
             services.AddTransient<IOrdenConsumer, OrdenConsumer>();
             services.AddTransient<IOrdenPublisher, OrdenPublisher>();
-
+           // services.AddHostedService<CanastaConsumer>();
             services.AddHealthChecks()
                 .AddCheck("memoria", new ApiHealthCheck())
                 .AddNpgSql(

@@ -58,10 +58,11 @@ namespace Infraestructure.Repositories
             return await _dbContext.canasta.ToListAsync();
         }
 
-        public async Task UpdateAsync(Canasta entity)
+        public void UpdateAsync(Canasta entity)
         {
+            //_dbContext.canasta.Update(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
     }
 }

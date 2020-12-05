@@ -1,6 +1,8 @@
 ﻿using ApplicationCore.DTO;
+using ApplicationCore.Entities;
 using ApplicationCore.Exceptions;
 using ApplicationCore.Interfaces;
+using Infraestructure.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace Infraestructure.Services
 
         private ICanastaPublisher _publisher;
 
+       // private ICanastaConsumer _consumer;
+
         //  private IPublisher _publisher;
 
         public CanastaServices(IAsyncRepository<ApplicationCore.Entities.Canasta> repository, IUnitOfWork unitOfWork, ICanastaPublisher publisher)
@@ -24,6 +28,7 @@ namespace Infraestructure.Services
             _repository = repository;
             _unitOfWork = unitOfWork;
             _publisher = publisher;
+          //  _consumer = consumer;
             //  _publisher = publisher;
         }
 
@@ -108,17 +113,18 @@ namespace Infraestructure.Services
             return canastas;
         }
 
-        public async Task UpdateCanastaAsync(int id, CanastaDTO canastaActualizada)
+        public void UpdateCanastaAsync(Canasta canasta)
         {
-            var resultado = await _repository.GetByIdAsync(id);
-            if (resultado == null) throw new ItemNoExisteException("La canasta con el siguiente id no existe: " + id);
-            resultado.id_estado = canastaActualizada.Id_estado;
-            resultado.id_producto = canastaActualizada.Id_producto;
-            resultado.id_usuario = canastaActualizada.Id_usuario;
-            resultado.precio_canasta = canastaActualizada.precio_canasta;
-            resultado.cantidad_canasta = canastaActualizada.Cantidad_canasta;
+            //var canasta = _consumer.ProcesarCanasta();
+            var resultado =  _repository.GetById(canasta.id_canasta);
+            if (resultado == null) throw new ItemNoExisteException("La canasta con el siguiente id no existe: " + canasta.id_canasta);
+            resultado.id_estado = canasta.id_estado;
+            //resultado.id_producto = canastaActualizada.Id_producto;
+            //resultado.id_usuario = canastaActualizada.Id_usuario;
+            //resultado.precio_canasta = canastaActualizada.precio_canasta;
+            //resultado.cantidad_canasta = canastaActualizada.Cantidad_canasta;
 
-            await _repository.UpdateAsync(resultado);
+            _repository.UpdateAsync(resultado);
         }
     }
 }

@@ -54,10 +54,10 @@ namespace Infraestructure.Repositories
             return await _dbContext.orden.ToListAsync();
         }
 
-        public async Task UpdateAsync(Orden entity)
+        public void UpdateAsync(Orden entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
     }
 }

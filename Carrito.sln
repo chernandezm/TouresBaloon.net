@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiOrden", "WebApiOrden\WebApiOrden.csproj", "{6E7FD53C-807C-4896-B78D-9078B4A98C78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchDog", "WatchDog\WatchDog.csproj", "{3AC4178B-981A-4B77-9BEC-7ED162A2F676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchDog", "WatchDog\WatchDog.csproj", "{3AC4178B-981A-4B77-9BEC-7ED162A2F676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanastaConsumer", "CanastaConsumer\CanastaConsumer.csproj", "{DB585D90-0C03-49D5-96C8-CB960E7462AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3AC4178B-981A-4B77-9BEC-7ED162A2F676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AC4178B-981A-4B77-9BEC-7ED162A2F676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AC4178B-981A-4B77-9BEC-7ED162A2F676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB585D90-0C03-49D5-96C8-CB960E7462AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB585D90-0C03-49D5-96C8-CB960E7462AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB585D90-0C03-49D5-96C8-CB960E7462AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB585D90-0C03-49D5-96C8-CB960E7462AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

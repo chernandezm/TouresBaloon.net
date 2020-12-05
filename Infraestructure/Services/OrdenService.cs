@@ -16,6 +16,7 @@ namespace Infraestructure.Services
         private IUnitOfWork _unitOfWork;
         private IOrdenConsumer _ordenConsumer;
         private IOrdenPublisher _ordenPublisher;
+       // private ICheckoutConsumer _checkoutConsumer;
 
         public OrdenService(IAsyncRepository<Orden> repository, IUnitOfWork unitOfWork, IOrdenConsumer ordenConsumer, IOrdenPublisher ordenPublisher)
         {
@@ -23,6 +24,7 @@ namespace Infraestructure.Services
             _unitOfWork = unitOfWork;
             _ordenConsumer = ordenConsumer;
             _ordenPublisher = ordenPublisher;
+          //  _checkoutConsumer = checkoutConsumer;
         }
 
         public async Task<OrdenDTO> CreateOrdenAsync(OrdenDTO orden)
@@ -36,8 +38,13 @@ namespace Infraestructure.Services
             };
             Canasta canasta = _ordenConsumer.ProcesarOrden(nuevaOrden);
             nuevaOrden.id_canasta = canasta.id_canasta;
+            nuevaOrden.precio_orden = canasta.precio_canasta;
+            nuevaOrden.cantidad_orden = canasta.cantidad_canasta;
             nuevaOrden = await _repository.AddAsync(nuevaOrden);
             orden.id_orden = nuevaOrden.id_orden;
+            orden.cantidad_orden = nuevaOrden.cantidad_orden;
+            orden.precio_orden = nuevaOrden.precio_orden;
+            orden.id_canasta = nuevaOrden.id_canasta;
             _ordenPublisher.DistribuirOrden(orden);
             return orden;
         }
@@ -81,16 +88,17 @@ namespace Infraestructure.Services
             return orden;
         }
 
-        public async Task UpdateOrdenAsync(int id, OrdenDTO ordenActualizada)
+        public void UpdateOrdenAsync(Orden orden)
         {
-            var resultado = await _repository.GetByIdAsync(id);
-            if (resultado == null) throw new ItemNoExisteException("La canasta con el siguiente id no existe: " + id);
+            //var orden = _checkoutConsumer.ProcesarOrden();
+            var resultado = _repository.GetById(orden.id_orden);
+            if (resultado == null) throw new ItemNoExisteException("La orden con el siguiente id no existe: " + orden.id_estado);
 
-            resultado.id_estado = ordenActualizada.id_estado;
-            resultado.id_usuario = ordenActualizada.id_usuario;
-            resultado.fecha_orden = ordenActualizada.fecha_orden;
+            resultado.id_estado = orden.id_estado;
+            //resultado.id_usuario = ordenActualizada.id_usuario;
+            //resultado.fecha_orden = ordenActualizada.fecha_orden;
 
-            await _repository.UpdateAsync(resultado);
+            _repository.UpdateAsync(resultado);
         }
     }
 }

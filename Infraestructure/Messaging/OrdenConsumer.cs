@@ -19,8 +19,9 @@ namespace Infraestructure.Messaging
         {
             config = new ConsumerConfig
             {
-                GroupId = "topico-canasta",
-                BootstrapServers = "localhost:9092",
+                GroupId = "test-consumer-group",
+                BootstrapServers = "172.17.0.1:9092",
+                //BootstrapServers = "localhost:9092",
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
 
@@ -30,7 +31,7 @@ namespace Infraestructure.Messaging
         {
             using (var c = new ConsumerBuilder<Ignore, string>(config).Build())
             {
-                c.Subscribe("topico-canasta");
+                c.Subscribe("canasta");
 
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) =>

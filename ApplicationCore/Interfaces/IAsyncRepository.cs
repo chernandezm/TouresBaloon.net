@@ -11,7 +11,7 @@ namespace ApplicationCore.Interfaces
         Task<T> GetByIdAsync(int id);
         Task<IReadOnlyList<T>> ListAllAsync();
         Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
+        void UpdateAsync(T entity);
         //Task DeleteAsync(T entity);
         T GetById(int id);
         void DeleteAsync(T entity);

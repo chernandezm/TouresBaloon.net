@@ -11,5 +11,7 @@ namespace ApplicationCore.DTO
         public int id_estado { get; set; }
         public DateTime fecha_orden { get; set; }
         public int id_canasta { get; set; }
+        public float precio_orden { get; set; }
+        public int cantidad_orden { get; set; }
     }
 }
